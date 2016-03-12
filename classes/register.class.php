@@ -141,7 +141,7 @@ class internship {
                 "city"=>"'$this->city'",
                 "startdate"=>"'$this->startdate'"
             
-            );
+);
             
             $this->id = $db->insert($data, 'internship');
            // $this->joinDate = time();

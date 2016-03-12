@@ -13,6 +13,7 @@ class session {
 
 
         $hashedPassword = md5($password);
+
         $result = mysql_query("SELECT * FROM user WHERE email='$email' AND password='$hashedPassword'");
 
         if (mysql_num_rows($result) == 1) {
@@ -64,6 +65,7 @@ class session {
             return new student($result1);
         } elseif ($result[0]['role'] == "employer") {
             $result2 = $db->select('employer', "email='$email'");
+
             return new employer($result2);
         }
     }

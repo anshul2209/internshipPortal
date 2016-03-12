@@ -70,6 +70,7 @@ class database {
         }
  
         $sql = "insert into $table ($columns) values ($values)";
+
         mysql_query($sql) or die(mysql_error());
  
         //return the ID of the user in the database.

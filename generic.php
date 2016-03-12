@@ -50,4 +50,5 @@ if (isset($_SESSION['logged_in'])) {
 
         </ul>
     </div>
+
 </nav>
