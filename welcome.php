@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged_in'])) {
 }
 
 //get the user object from the session
-$userEmail = unserialize( $_SESSION['userEmail']);
+$userEmail = unserialize($_SESSION['userEmail']);
 ?>
 
 <html>

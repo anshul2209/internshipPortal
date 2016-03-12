@@ -107,7 +107,10 @@ class internship {
     public $duration;
     public $deadline;
     public $profile;
-    
+    public $startdate;
+    public $city;
+
+
     //Constructor is called whenever a new object is created.
     //Takes an associative array with the DB row as an argument.
     function __construct($data) {
@@ -115,6 +118,8 @@ class internship {
         $this->duration = (isset($data['duration'])) ? $data['duration'] : "";
         $this->deadline = (isset($data['deadline'])) ? $data['deadline'] : "";
         $this->profile = (isset($data['profile'])) ? $data['profile'] : "";
+        $this->city = (isset($data['city'])) ? $data['city'] : "";
+        $this->startdate = (isset($data['startdate'])) ? $data['startdate'] : "";
     
     }
  
@@ -132,7 +137,10 @@ class internship {
                 "duration" => "'$this->duration'",
                 "deadline" => "'$this->deadline'",
                 "profile" => "'$this->profile'",
-                "employeremail" => "'$userEmail'"
+                "employeremail" => "'$userEmail'",
+                "city"=>"'$this->city'",
+                "startdate"=>"'$this->startdate'"
+            
             );
             
             $this->id = $db->insert($data, 'internship');

@@ -3,7 +3,7 @@
 //register.php
 require_once 'generic.php';
 //initialize php variables used in the form
-$studentfullname="";
+$studentfullname = "";
 $studentemail = "";
 $studentpassword = "";
 $studentconfirmpassword = "";
@@ -12,16 +12,16 @@ $profile = "";
 $city = "";
 $studentphone = "";
 $error = "";
-$employerfullname="";
-$employeremail="";
-$employerpassword="";
-$employerconfirmpassword="";
-$employerphone="";
-$companyname="";
- 
+$employerfullname = "";
+$employeremail = "";
+$employerpassword = "";
+$employerconfirmpassword = "";
+$employerphone = "";
+$companyname = "";
+
 //check to see that the form has been submitted
-if(isset($_POST['submit-studentform'])) { 
- 
+if (isset($_POST['submit-studentform'])) {
+
     //retrieve the $_POST variables
     $studentfullname = $_POST['studentfullname'];
     $studentemail = $_POST['studentemail'];
@@ -31,27 +31,25 @@ if(isset($_POST['submit-studentform'])) {
     $profile = $_POST['profile'];
     $city = $_POST['city'];
     $studentphone = $_POST['studentphone'];
- 
+
     //initialize variables for form validation
     $success = true;
     $session = new session();
- 
+
     //validate that the form was filled out correctly
     //check to see if user name already exists
-    if($session->checkEmailExists($studentemail))
-    {
+    if ($session->checkEmailExists($studentemail)) {
         $error .= "That Email is already registered please login.<br/> \n\r";
         $success = false;
     }
- 
+
     //check to see if passwords match
-    if($studentpassword != $studentconfirmpassword) {
+    if ($studentpassword != $studentconfirmpassword) {
         $error .= "Passwords do not match.<br/> \n\r";
         $success = false;
     }
- 
-    if($success)
- {
+
+    if ($success) {
         //prep the data for saving in a new user object
         $data['studentfullname'] = $studentfullname;
         $data['studentemail'] = $studentemail;
@@ -60,50 +58,48 @@ if(isset($_POST['submit-studentform'])) {
         $data['profile'] = $profile;
         $data['city'] = $city;
         $data['studentphone'] = $studentphone;
-       
+
         //create the new user object
-        $newStudent= new student($data);
+        $newStudent = new student($data);
 
         //save the new user to the database
         $newStudent->save();
 
         //log them in
-        if($session->login($studentemail, $studentpassword)){
+        if ($session->login($studentemail, $studentpassword)) {
 
-        //redirect them to a welcome page
-        header("Location: welcome.php");
+            //redirect them to a welcome page
+            header("Location: index.php");
         }
     }
 }
-if(isset($_POST['submit-employerform'])) { 
- 
+if (isset($_POST['submit-employerform'])) {
+
     //retrieve the $_POST variables
     $employerfullname = $_POST['employerfullname'];
     $employeremail = $_POST['employeremail'];
     $employerpassword = $_POST['employerpassword'];
     $employerconfirmpassword = $_POST['employerconfirmpassword'];
     $employerphone = $_POST['employerphone'];
-    $companyname= $_POST['companyname'];
+    $companyname = $_POST['companyname'];
     //initialize variables for form validation
     $success = true;
     $session = new session();
- 
+
     //validate that the form was filled out correctly
     //check to see if user name already exists
-    if($session->checkEmailExists($employeremail))
-    {
+    if ($session->checkEmailExists($employeremail)) {
         $error .= "That Email is already registered please login.<br/> \n\r";
         $success = false;
     }
- 
+
     //check to see if passwords match
-    if($employerpassword != $employerconfirmpassword) {
+    if ($employerpassword != $employerconfirmpassword) {
         $error .= "Passwords do not match.<br/> \n\r";
         $success = false;
     }
- 
-    if($success)
- {
+
+    if ($success) {
         //prep the data for saving in a new user object
         $data['employerfullname'] = $employerfullname;
         $data['employeremail'] = $employeremail;
@@ -117,45 +113,42 @@ if(isset($_POST['submit-employerform'])) {
         $newEmployer->save();
 
         //log them in
-       if($session->login($employeremail, $employerpassword)) {
+        if ($session->login($employeremail, $employerpassword)) {
 
-        
-        header("Location: welcome.php");
-       }
+
+            header("Location: index.php");
+        }
     }
 }
- 
+
 //If the form wasn't submitted, or didn't validate
 //then we show the registration form again
 ?>
- 
+
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <title>Registration</title>
     </head>
-<body>
-    <script src="js/jquery-2.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <div class="row">
-    </div>
-  
-    <?php echo ($error != "") ? $error : ""; ?>
-    <div class="container">
-
+    <body>
+        <script src="js/jquery-2.2.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <div class="row">
-            <div class="col-md-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <button type="button" name="student" id="student" class="btn btn-success">I'm a Student!</button>
+        </div>
+
+        <?php echo ($error != "") ? $error : ""; ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                <div class="panel panel-default" id="studentregister">
+                    <div class="panel-heading">
+                        <h2 class="panel-title pull-left">
+                            <strong> I'm a Student! </strong>
+                        </h2>
+                        <div class='clearfix'></div>
                     </div>
-                    <div class="col-md-6">
-                        <button type="button" name="employer" id="employer" class="btn btn-success">I'm an Employer!</button>
-                    </div> 
-                </div>
-                <div class="row">
-                    <div class="col-md-12" id="studentregister" >
+                    <div class="panel-body">
                         <form action="register.php" method="post" role="form">
                             <div class="form-group">
                                 <label for="fullname">Full Name:</label>
@@ -193,7 +186,17 @@ if(isset($_POST['submit-employerform'])) {
                             <button type="submit" class="btn btn-default" name="submit-studentform">Register Me</button>
                         </form>
                     </div>
-                    <div class="col-md-12" id="employerregister">
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="panel panel-default" id="employerregister">
+                    <div class="panel-heading">
+                        <h2  class="panel-title pull-left">
+                            <strong> I'm an Employer!</strong>
+                        </h2>
+                        <div class='clearfix'></div>
+                    </div>
+                    <div class="panel-body">
                         <form action="register.php" method="post" role="form">
                             <div class="form-group">
                                 <label for="employerfullname">Full Name:</label>
@@ -222,27 +225,24 @@ if(isset($_POST['submit-employerform'])) {
                             </div>
 
                             <button type="submit" class="btn btn-default" name="submit-employerform">Register Me</button>
-                        </form>
+                        </form>   
                     </div>
                 </div>
+                </div>
             </div>
-
-
         </div>
-
-    </div>
-    <script type="javascript/text">
-     $("#student").click(function() {
+        <script type="javascript/text">
+            $("#student").click(function() {
             $('#employerregister').toggle();
             $('#studentregister').toggle();
-        }
-     $("#employer").click(function() {
-         $('#studentregister:visible').hide();
+            }
+            $("#employer").click(function() {
+            $('#studentregister:visible').hide();
             $('#employerregister:visible').show();
-            
-           
-     }
-    </script>
-</body>
+
+
+            }
+        </script>
+    </body>
 </html>
 

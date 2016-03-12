@@ -40,7 +40,6 @@ class database {
     
     public function select($table, $where) {
         $sql = "SELECT * FROM $table WHERE $where";
-        echo $sql;
         $result = mysql_query($sql)or die(mysql_error());
         if(mysql_num_rows($result) == 1){
             return $this->process($result);
@@ -71,7 +70,6 @@ class database {
         }
  
         $sql = "insert into $table ($columns) values ($values)";
-  echo $sql;
         mysql_query($sql) or die(mysql_error());
  
         //return the ID of the user in the database.
