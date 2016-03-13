@@ -29,23 +29,23 @@ if (isset($_SESSION['logged_in'])) {
             <li class="active"><a href="index.php">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li> 
-            <? if(isset($_SESSION['userRole']) && $_SESSION['userRole']=='employer'): ?>
+            <?php if(isset($_SESSION['logged_in']) && isset($_SESSION['userRole']) && $_SESSION['userRole']=='employer'): ?>
             <li><a href="viewapplication.php">View Applications</a></li>
             <li><a href="addinternship.php">Add Internship</a></li> 
-            <? elseif(isset($_SESSION['userRole']) && $_SESSION['userRole']=='student'): ?>
+            <?php elseif(isset($_SESSION['logged_in']) && isset($_SESSION['userRole']) && $_SESSION['userRole']=='student'): ?>
             <li><a href="viewapplication.php">My Applications</a></li>
-            <? endif ?>
+            <?php endif ?>
         </ul>
 
         <ul class="nav navbar-nav pull-right">
 
-            <? if (!isset($_SESSION['logged_in'])): ?>
+            <?php if (!isset($_SESSION['logged_in'])): ?>
             <li id="login"><a href="login.php">Login</a>
             <li id="register "><a href="register.php">Register</a>
 
-                <? elseif (isset($_SESSION['logged_in'])): ?>
+                <?php elseif (isset($_SESSION['logged_in'])): ?>
             <li id="logout"><a href="logout.php">Logout</a>
-                <? endif; ?>
+                <?php endif; ?>
 
 
         </ul>
