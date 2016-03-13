@@ -35,7 +35,11 @@ if (isset($_POST['submit-studentform'])) {
     //initialize variables for form validation
     $success = true;
     $session = new session();
-
+    
+if(empty($studentfullname) || empty($studentemail)|| empty($studentpassword) || empty($studentconfirmpassword) || empty($qualification) || empty($profile) || empty($city) || empty($studentphone) ){
+    $succes=false;
+    $error .="All the fields are mandatory.Please Fil";
+}
     //validate that the form was filled out correctly
     //check to see if user name already exists
     if ($session->checkEmailExists($studentemail)) {
