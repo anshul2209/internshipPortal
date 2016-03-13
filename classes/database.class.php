@@ -3,12 +3,12 @@
 
 class database {
  
-    //protected $db_name = 'cufaabuvvc';
-    //protected $db_user = 'cufaabuvvc';
-    //protected $db_pass = 'aGK7PjpqQ8';
-    protected $db_name = 'Internship';
-    protected $db_user = 'root';
-    protected $db_pass = '';
+    protected $db_name = 'cufaabuvvc';
+    protected $db_user = 'cufaabuvvc';
+    protected $db_pass = 'aGK7PjpqQ8';
+    //protected $db_name = 'Internship';
+   // protected $db_user = 'root';
+ //   protected $db_pass = '';
     protected $db_host = 'localhost';
  
    

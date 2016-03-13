@@ -38,7 +38,7 @@ if (isset($_POST['submit-studentform'])) {
     
 if(empty($studentfullname) || empty($studentemail)|| empty($studentpassword) || empty($studentconfirmpassword) || empty($qualification) || empty($profile) || empty($city) || empty($studentphone) ){
     $succes=false;
-    $error .="All the fields are mandatory.Please Fil";
+    $error .=" All the fields are mandatory ";
 }
     //validate that the form was filled out correctly
     //check to see if user name already exists
@@ -92,6 +92,11 @@ if (isset($_POST['submit-employerform'])) {
 
     //validate that the form was filled out correctly
     //check to see if user name already exists
+    if (empty($employerfullname) || empty($employeremail) || empty($employerpassword) || empty($employerconfirmpassword) || empty($employerphone) || empty($companyname)) {
+    $error  .= ' Please fill All Fields' ;
+    $success = false;
+} 
+    
     if ($session->checkEmailExists($employeremail)) {
         $error .= "That Email is already registered please login.<br/> \n\r";
         $success = false;
@@ -142,13 +147,14 @@ if (isset($_POST['submit-employerform'])) {
         </div>
 
         <?php echo ($error != "") ? $error : ""; ?>
+        <br>
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                 <div class="panel panel-default" id="studentregister">
                     <div class="panel-heading">
                         <h2 class="panel-title pull-left">
-                            <strong> I'm a Student! </strong>
+                            <strong class="text-danger"> I'm a Student! </strong>
                         </h2>
                         <div class='clearfix'></div>
                     </div>
@@ -187,7 +193,7 @@ if (isset($_POST['submit-employerform'])) {
                                 <input type="text" value="<?php echo $studentphone; ?>"  class="form-control" id="phone" name="studentphone">
                             </div>
 
-                            <button type="submit" class="btn btn-default" name="submit-studentform">Register Me</button>
+                            <button type="submit" class="btn btn-success" name="submit-studentform">Register Me</button>
                         </form>
                     </div>
                 </div>
@@ -196,7 +202,7 @@ if (isset($_POST['submit-employerform'])) {
                 <div class="panel panel-default" id="employerregister">
                     <div class="panel-heading">
                         <h2  class="panel-title pull-left">
-                            <strong> I'm an Employer!</strong>
+                           <strong class="text-danger">I'm an Employer!</strong>
                         </h2>
                         <div class='clearfix'></div>
                     </div>
@@ -228,7 +234,7 @@ if (isset($_POST['submit-employerform'])) {
                                 <input type="text" value="<?php echo $employerphone; ?>"  class="form-control" id="employerphone" name="employerphone">
                             </div>
 
-                            <button type="submit" class="btn btn-default" name="submit-employerform">Register Me</button>
+                            <button type="submit" class="btn btn-success" name="submit-employerform">Register Me</button>
                         </form>   
                     </div>
                 </div>
