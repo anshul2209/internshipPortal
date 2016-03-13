@@ -28,32 +28,37 @@ require_once 'generic.php';
                     "<div class='col-md-4'>
                         <div class='panel panel-default'>
                             <div class='panel-heading'>
-                                <h3 class='panel-title pull-left'><strong>"
+                                <h1 class='panel-title pull-left'><strong class='text-danger'>"
+                    . $value['profile'] .
+                    "</strong> </h1>
+                        
+                                
+                                    <h3 class='panel-title pull-left'><strong>"
                     . $value['companyname'] .
                     "</strong> </h3>
-                            
+                                
                                 <div class='clearfix'></div>
                             </div>
                             <div class='panel-body'>
                                 <div class='row'>
-                                    <div class='col-md-4'>City :</div>
+                                    <div class='col-md-4'><label class='text-success'><strong>City :</strong></label></div>
                                     <div class='col-md-8'>" . $value['city'] . "</div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-4'>Start Date :</div>
+                                    <div class='col-md-4'><label class='text-success'><strong>Start Date :</strong></label></div>
                                     <div class='col-md-8'>" . $value['startdate'] . "</div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-4'>Duration :</div>
-                                    <div class='col-md-8'>" . $value['duration'] . "</div>
+                                    <div class='col-md-4'><label class='text-success'><strong>Duration :</strong></label></div>
+                                    <div class='col-md-8'>" . $value['duration'] . "  months</div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-4'>Profile :</div>
+                                    <div class='col-md-4'><label class='text-success'><strong>Profile :</strong></label></div>
                                     <div class='col-md-8'>" . $value['profile'] . "</div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-4'>Deadline : :</div>
-                                    <div class='col-md-8'>" . $value['deadline'] . "</div>
+                                    <div class='col-md-4'><label class='text-success'><strong>Deadline :</strong></label></div>
+                                    <div class='col-md-8'><label class='bg-primary'>" . $value['deadline'] . "</label></div>
                                 </div>
                             </div>
                         </div>

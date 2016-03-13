@@ -13,14 +13,14 @@ require_once 'generic.php';
         <script src="js/bootstrap.min.js"></script>
 
         <div class="row">
-                <?php if (isset($_SESSION['logged_in'])) : ?>
-                    <?php $user = unserialize($_SESSION['userEmail']); ?>
-                    <input type="hidden" id="useremail" value="<?php echo unserialize($_SESSION['userEmail']); ?>"/>
-                    <input type="hidden" id="userrole" value="<?php echo $_SESSION['userRole']; ?>"/>
-                    <label class="pull-right  text-primary">Hello, <?php echo $user ?>. You are logged in.</label>
-                <?php endif; ?>
-            </div>
-            <div class="container-fluid">
+            <?php if (isset($_SESSION['logged_in'])) : ?>
+                <?php $user = unserialize($_SESSION['userEmail']); ?>
+                <input type="hidden" id="useremail" value="<?php echo unserialize($_SESSION['userEmail']); ?>"/>
+                <input type="hidden" id="userrole" value="<?php echo $_SESSION['userRole']; ?>"/>
+                <label class="pull-right  text-primary">Hello, <?php echo $user ?>. You are logged in.</label>
+            <?php endif; ?>
+        </div>
+        <div class="container-fluid">
             <div class="row">
                 <br>
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -71,7 +71,7 @@ require_once 'generic.php';
 
 
 
-                <br>
+            <br>
             <div class = "row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -94,35 +94,35 @@ require_once 'generic.php';
                         <div class='panel panel-default'>
                             <div class='panel-heading'>
                                <h1 class='panel-title pull-left'><strong class='text-danger'>"
-                    . $value['profile'] .
-                    "</strong> </h1>
+                                . $value['profile'] .
+                                "</strong> </h1>
                         
                                 <button class='btn btn-default pull-right post' id='$jobid'>Apply</button><br>
                                     <h3 class='panel-title pull-left'><strong>"
-                    . $value['companyname'] .
-                    "</strong> </h3>
+                                . $value['companyname'] .
+                                "</strong> </h3>
                                 
                                 <div class='clearfix'></div>
                             </div>
                             <div class='panel-body'>
                                 <div class='row'>
-                                    <div class='col-md-4'><label class='bg-success'><strong>City :</strong></label></div>
+                                    <div class='col-md-4'><label class='text-success'><strong>City :</strong></label></div>
                                     <div class='col-md-8'>" . $value['city'] . "</div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-4'><label class='bg-success'><strong>Start Date :</strong></label></div>
+                                    <div class='col-md-4'><label class='text-success'><strong>Start Date :</strong></label></div>
                                     <div class='col-md-8'>" . $value['startdate'] . "</div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-4'><label class='bg-success'><strong>Duration :</strong></label></div>
+                                    <div class='col-md-4'><label class='text-success'><strong>Duration :</strong></label></div>
                                     <div class='col-md-8'>" . $value['duration'] . "</div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-4'><label class='bg-success'><strong>Profile :</strong></label></div>
+                                    <div class='col-md-4'><label class='text-success'><strong>Profile :</strong></label></div>
                                     <div class='col-md-8'>" . $value['profile'] . "</div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-4'><label class='bg-success'><strong>Deadline :</strong></label></div>
+                                    <div class='col-md-4'><label class='text-success'><strong>Deadline :</strong></label></div>
                                     <div class='col-md-8'><label class='bg-primary'>" . $value['deadline'] . "</label></div>
                                 </div>
                             </div>
@@ -136,30 +136,30 @@ require_once 'generic.php';
                     </div>
                 </div>
             </div>
-            </div>
-            <script>
-                $(document).ready(function () {
+        </div>
+        <script>
+            $(document).ready(function () {
                 $('.carousel').carousel({
                     interval: 1000 * 2
                 });
             });
-                $('.post').click(function () {
-                    $.ajax({
-                        url: 'saveinternship.php',
-                        type: 'post',
-                        data: {clickeddiv: $(this).attr('id'),
-                            email: $("#useremail").val()
-                        },
-                        success: function (success) {
-                            if (success == 0)
-                                alert("Please try after sometime");
-                            else
-                                window.location = "studentdashboard.php";
-                        } // or whatever you want as success, maybe here nothing 
+            $('.post').click(function () {
+                $.ajax({
+                    url: 'saveinternship.php',
+                    type: 'post',
+                    data: {clickeddiv: $(this).attr('id'),
+                        email: $("#useremail").val()
+                    },
+                    success: function (success) {
+                        if (success == 0)
+                            alert("Please try after sometime");
+                        else
+                            window.location = "studentdashboard.php";
+                    } // or whatever you want as success, maybe here nothing 
 
-                    });
                 });
+            });
 
-            </script>
+        </script>
     </body>
 </html>
