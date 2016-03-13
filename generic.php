@@ -23,28 +23,29 @@ if (isset($_SESSION['logged_in'])) {
 <nav class="navbar navbar-default navbar-stati-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
+            <a class="navbar-brand pull-left"  href="index.php"><samp><strong class="text-primary">THE INTERNSHIP</strong></samp></a>
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li> 
             <?php if(isset($_SESSION['logged_in']) && isset($_SESSION['userRole']) && $_SESSION['userRole']=='employer'): ?>
-            <li><a href="viewapplication.php">View Applications</a></li>
-            <li><a href="addinternship.php">Add Internship</a></li> 
+            <li class="bg-danger"><a href="viewapplication.php"><strong>View Applications</strong></a></li>
+            <li class="bg-danger"><a href="addinternship.php"><strong>Add Internship</strong></a></li> 
             <?php elseif(isset($_SESSION['logged_in']) && isset($_SESSION['userRole']) && $_SESSION['userRole']=='student'): ?>
-            <li><a href="viewapplication.php">My Applications</a></li>
+            <li class="bg-danger"><a href="viewapplication.php"><strong>My Applications</strong></a></li>
             <?php endif ?>
+            <li><a href="about.php">About Us</a></li>
+            <li><a href="contactus.php">Contact Us</a></li> 
+            
         </ul>
 
         <ul class="nav navbar-nav pull-right">
 
             <?php if (!isset($_SESSION['logged_in'])): ?>
-            <li id="login"><a href="login.php">Login</a>
-            <li id="register "><a href="register.php">Register</a>
+            <li id="login" ><a href="login.php"><strong>Login</strong></a>
+            <li id="register "><a href="register.php"><strong>Register</strong></a>
 
                 <?php elseif (isset($_SESSION['logged_in'])): ?>
-            <li id="logout"><a href="logout.php">Logout</a>
+            <li id="logout" ><a href="logout.php"><strong>Logout</strong></a>
                 <?php endif; ?>
 
 
