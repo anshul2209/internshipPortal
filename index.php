@@ -78,7 +78,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION["userRole"] == 'student') {
             <br><br>
             <?php
             $db = new database();
-            $result = $db->select('internship', "deadline >= CAST(CURRENT_TIMESTAMP AS DATE)");
+            $result = $db->select('internship', "jobid > 0 ");
             ?>
 
 
