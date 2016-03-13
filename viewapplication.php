@@ -13,7 +13,7 @@ require_once 'generic.php';
         <script src="js/bootstrap.min.js"></script>
 
         <div class="container">
-            <? if(isset($_SESSION['userRole']) && $_SESSION['userRole']=='student'): ?>
+            <?php if(isset($_SESSION['userRole']) && $_SESSION['userRole']=='student'): ?>
             <div class = "row">
                 <?php
                 $user = unserialize($_SESSION['userEmail']);
@@ -64,7 +64,7 @@ require_once 'generic.php';
                 ?>
             </div>
 
-            <? elseif(isset($_SESSION['userRole']) && $_SESSION['userRole']=='employer'): ?>
+            <?php elseif(isset($_SESSION['userRole']) && $_SESSION['userRole']=='employer'): ?>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3 class="text-danger"><strong>Applications Received</strong></h3><br>
@@ -101,9 +101,9 @@ require_once 'generic.php';
             </div>
                 </div>
         </div>
-            <? else : ?>
+            <?php else : ?>
             <p>Nothing To display</p>
-            <? endif ?>
+            <?php endif ?>
 
 
 
