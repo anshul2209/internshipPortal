@@ -30,7 +30,7 @@ require_once 'generic.php';
                             <div class='panel-heading'>
                                 <h1 class='panel-title pull-left'><strong class='text-danger'>"
                     . $value['profile'] .
-                    "</strong> </h1>
+                    "</strong> </h1><br>
                         
                                 
                                     <h3 class='panel-title pull-left'><strong>"
