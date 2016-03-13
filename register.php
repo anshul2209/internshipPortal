@@ -156,6 +156,8 @@ if (isset($_POST['submit-employerform'])) {
                         <h2 class="panel-title pull-left">
                             <strong class="text-danger"> I'm a Student! </strong>
                         </h2>
+                        &nbsp;&nbsp;
+                        <img src="./resources/student.png" style="height: 30px;width :40px">
                         <div class='clearfix'></div>
                     </div>
                     <div class="panel-body">
@@ -203,7 +205,8 @@ if (isset($_POST['submit-employerform'])) {
                     <div class="panel-heading">
                         <h2  class="panel-title pull-left">
                            <strong class="text-danger">I'm an Employer!</strong>
-                        </h2>
+                        </h2>&nbsp;&nbsp;
+                        <img src="./resources/employer.png" style="height: 30px;width :40px">
                         <div class='clearfix'></div>
                     </div>
                     <div class="panel-body">
