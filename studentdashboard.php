@@ -1,5 +1,8 @@
 <?php
 require_once 'generic.php';
+if (isset($_GET['success'])) {
+    echo "<h3 class='text-danger'><strong>Applied!Thanks For Your Application.</strong></h3>";
+}
 ?>
 
 <html>
@@ -13,12 +16,13 @@ require_once 'generic.php';
         <script src="js/bootstrap.min.js"></script>
 
         <div class="row">
-            <?php if (isset($_SESSION['logged_in'])) : ?>
+            <label id='message'></label>
+<?php if (isset($_SESSION['logged_in'])) : ?>
                 <?php $user = unserialize($_SESSION['userEmail']); ?>
                 <input type="hidden" id="useremail" value="<?php echo unserialize($_SESSION['userEmail']); ?>"/>
                 <input type="hidden" id="userrole" value="<?php echo $_SESSION['userRole']; ?>"/>
                 <label class="pull-right  text-primary">Hello, <?php echo $user ?>. You are logged in.</label>
-            <?php endif; ?>
+<?php endif; ?>
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -77,30 +81,34 @@ require_once 'generic.php';
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <h3 class="text-danger"><strong>Current Openings</strong></h3><br>
-                            <?php
-                            $user = unserialize($_SESSION['userEmail']);
-                            $db = new database();
-                            $sql = "SELECT * FROM internship WHERE jobid NOT IN(SELECT jobid FROM studentinternship WHERE email='$user')";
+<?php
+$user = unserialize($_SESSION['userEmail']);
+$db = new database();
+$sql = "SELECT * FROM internship WHERE jobid NOT IN(SELECT jobid FROM studentinternship WHERE email='$user')";
 
 
-                            $queryresult = mysql_query($sql)or die(mysql_error());
-                            $result = $db->process($queryresult);
-                            foreach ($result as $value) {
+$queryresult = mysql_query($sql)or die(mysql_error());
 
-                                $jobid = $value['jobid'];
+if (mysql_num_rows($queryresult) == 0) {
+    echo "<label class='text-primary'><strong>Sorry! No Job Listing Currently!</strong></hlabel>";
+}
+$result = $db->process($queryresult);
+foreach ($result as $value) {
 
-                                echo
-                                "<div class='col-md-3'>
+    $jobid = $value['jobid'];
+
+    echo
+    "<div class='col-md-3'>
                         <div class='panel panel-default'>
                             <div class='panel-heading'>
                                <h1 class='panel-title pull-left'><strong class='text-danger'>"
-                                . $value['profile'] .
-                                "</strong> </h1>
+    . $value['profile'] .
+    "</strong> </h1>
                         
                                 <button class='btn btn-default pull-right post' id='$jobid'>Apply</button><br>
                                     <h3 class='panel-title pull-left'><strong>"
-                                . $value['companyname'] .
-                                "</strong> </h3>
+    . $value['companyname'] .
+    "</strong> </h3>
                                 
                                 <div class='clearfix'></div>
                             </div>
@@ -129,9 +137,9 @@ require_once 'generic.php';
                         </div>
                     </div>"
 
-                                ;
-                            }
-                            ?>
+    ;
+}
+?>
                         </div>
                     </div>
                 </div>
@@ -153,8 +161,11 @@ require_once 'generic.php';
                     success: function (success) {
                         if (success == 0)
                             alert("Please try after sometime");
-                        else
-                            window.location = "studentdashboard.php";
+                        else {
+
+                            window.location = "studentdashboard.php?success=1";
+
+                        }
                     } // or whatever you want as success, maybe here nothing 
 
                 });

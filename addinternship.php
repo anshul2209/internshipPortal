@@ -9,6 +9,11 @@ $employeremail = "";
 $startdate = "";
 $city = "";
 $error = "";
+if(isset($_GET['success'])){
+    echo "<h3 class='text-danger'><strong>Internship Posted!</strong></h3>";
+    
+    
+}
 
 //check to see that the form has been submitted
 if (isset($_POST['submit-addinternship'])) {
@@ -56,7 +61,7 @@ if (isset($_POST['submit-addinternship'])) {
 
         //log them i
         //redirect them to a welcome page
-        header("Location: addinternship.php");
+        header("Location: addinternship.php?success=1");
     }
 }
 ?>
